@@ -6,6 +6,17 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { authFormSchema } from "@/lib/utils";
+import { Control, FieldPath, Form } from "react-hook-form";
+
+const formSchema = authFormSchema("sign-up");
+
+interface CustomInput {
+  control: Control<z.inter<typeof formSchema>>;
+  name: FieldPath<z.inter<typeof formSchema>>;
+  label: string;
+  placeholder: string;
+}
 
 const CustomInput = ({ control, name, label, placeholder }: CustomInput) => {
   return (
@@ -20,6 +31,7 @@ const CustomInput = ({ control, name, label, placeholder }: CustomInput) => {
               <Input
                 placeholder={placeholder}
                 className={"input-class"}
+                type={name === "password" ? "password" : "text"}
                 {...field}
               />
             </FormControl>
