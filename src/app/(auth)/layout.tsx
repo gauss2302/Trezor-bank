@@ -5,10 +5,5 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return (
-    <main>
-      SIDEBAR in here from the (auth)
-      {children} comes from the layout
-    </main>
-  );
+  return <main>{children}</main>;
 }
